@@ -10,820 +10,190 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --green: #0d4f3c;
-      --green-mid: #165f49;
-      --green-light: #e8f5f1;
-      --gold: #c8952a;
-      --gold-light: #fdf3e1;
-      --white: #ffffff;
-      --cream: #fafaf8;
-      --gray: #6b7280;
-      --gray-light: #f1f1ef;
-      --border: #e5e5e3;
-      --text: #111827;
+      --green: #0d4f3c; --green-mid: #165f49; --green-light: #e8f5f1;
+      --gold: #c8952a; --gold-light: #fdf3e1;
+      --white: #ffffff; --cream: #fafaf8;
+      --gray: #6b7280; --gray-light: #f1f1ef; --border: #e5e5e3; --text: #111827;
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      color: var(--text);
-      background: var(--cream);
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3, h4 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 800;
-      line-height: 1.1;
-    }
-
+    body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--cream); overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 800; line-height: 1.1; }
     a { text-decoration: none; color: inherit; }
 
-    /* ─── ANNOUNCEMENT BAR ─── */
-    .announce {
-      background: var(--green);
-      color: rgba(255,255,255,0.9);
-      text-align: center;
-      padding: 10px 24px;
-      font-size: 13.5px;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-    }
+    /* ─── ANNOUNCE ─── */
+    .announce { background: var(--green); color: rgba(255,255,255,0.9); text-align: center; padding: 10px 24px; font-size: 13.5px; font-weight: 500; }
     .announce a { color: var(--gold); font-weight: 700; text-decoration: underline; }
 
     /* ─── NAV ─── */
-    nav {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 0 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 76px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .logo-badge {
-      width: 46px;
-      height: 46px;
-      background: var(--green);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-    }
-    .logo-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--green);
-      line-height: 1;
-    }
-    .logo-tagline {
-      font-size: 11px;
-      color: var(--gray);
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-top: 3px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text);
-      transition: color 0.2s;
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0; right: 100%;
-      height: 2px;
-      background: var(--gold);
-      transition: right 0.25s;
-    }
+    nav { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 60px; display: flex; align-items: center; justify-content: space-between; height: 76px; position: sticky; top: 0; z-index: 100; }
+    .logo { display: flex; align-items: center; gap: 14px; }
+    .logo-badge { width: 46px; height: 46px; background: var(--green); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+    .logo-name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800; color: var(--green); line-height: 1; }
+    .logo-tagline { font-size: 11px; color: var(--gray); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 3px; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 15px; font-weight: 600; color: var(--text); transition: color 0.2s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 100%; height: 2px; background: var(--gold); transition: right 0.25s; }
     .nav-links a:hover { color: var(--green); }
     .nav-links a:hover::after { right: 0; }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-phone { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--green); display: flex; align-items: center; gap: 8px; }
 
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-    .nav-phone {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--green);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 11px 22px;
-      border-radius: 8px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.2s;
-      border: none;
-    }
-    .btn-green {
-      background: var(--green);
-      color: var(--white);
-    }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.2s; border: none; }
+    .btn-green { background: var(--green); color: var(--white); }
     .btn-green:hover { background: var(--green-mid); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(13,79,60,0.25); }
-
-    .btn-gold {
-      background: var(--gold);
-      color: var(--white);
-    }
-    .btn-gold:hover { background: #b8851f; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(200,149,42,0.35); }
-
-    .btn-outline-green {
-      background: transparent;
-      color: var(--green);
-      border: 2px solid var(--green);
-    }
+    .btn-gold { background: var(--gold); color: var(--white); }
+    .btn-gold:hover { background: #b8851f; transform: translateY(-1px); }
+    .btn-outline-green { background: transparent; color: var(--green); border: 2px solid var(--green); }
     .btn-outline-green:hover { background: var(--green); color: var(--white); }
-
-    .btn-white {
-      background: var(--white);
-      color: var(--green);
-    }
-    .btn-white:hover { background: var(--cream); transform: translateY(-1px); }
-
     .btn-lg { padding: 16px 32px; font-size: 16px; border-radius: 10px; }
 
     /* ─── HERO ─── */
-    .hero {
-      display: grid;
-      grid-template-columns: 55% 45%;
-      min-height: 600px;
-      overflow: hidden;
-    }
-
-    .hero-left {
-      background: var(--cream);
-      padding: 80px 60px 80px 80px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-    }
-
-    .hero-left::after {
-      content: '';
-      position: absolute;
-      top: 0; right: -60px; bottom: 0;
-      width: 120px;
-      background: var(--cream);
-      clip-path: polygon(0 0, 0% 100%, 100% 100%);
-      z-index: 2;
-    }
-
-    .hero-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 28px;
-    }
-    .eyebrow-line {
-      width: 36px;
-      height: 2px;
-      background: var(--gold);
-    }
-    .eyebrow-text {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .hero h1 {
-      font-size: clamp(42px, 4.5vw, 64px);
-      color: var(--green);
-      margin-bottom: 24px;
-      line-height: 1.05;
-    }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .hero-desc {
-      font-size: 17px;
-      color: var(--gray);
-      line-height: 1.7;
-      margin-bottom: 40px;
-      max-width: 480px;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 14px;
-      margin-bottom: 52px;
-    }
-
-    .hero-trust {
-      display: flex;
-      gap: 36px;
-    }
-    .trust-item {
-      display: flex;
-      flex-direction: column;
-    }
-    .trust-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 30px;
-      font-weight: 800;
-      color: var(--green);
-    }
+    .hero { display: grid; grid-template-columns: 55% 45%; min-height: 600px; overflow: hidden; }
+    .hero-left { background: var(--cream); padding: 80px 60px 80px 80px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+    .hero-left::after { content: ''; position: absolute; top: 0; right: -60px; bottom: 0; width: 120px; background: var(--cream); clip-path: polygon(0 0, 0% 100%, 100% 100%); z-index: 2; }
+    .hero-eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+    .eyebrow-line { width: 36px; height: 2px; background: var(--gold); }
+    .eyebrow-text { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+    .hero h1 { font-size: clamp(42px, 4.5vw, 64px); color: var(--green); margin-bottom: 24px; line-height: 1.05; }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-desc { font-size: 17px; color: var(--gray); line-height: 1.7; margin-bottom: 40px; max-width: 480px; }
+    .hero-ctas { display: flex; gap: 14px; margin-bottom: 52px; }
+    .hero-trust { display: flex; gap: 36px; }
+    .trust-item { display: flex; flex-direction: column; }
+    .trust-num { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 800; color: var(--green); }
     .trust-label { font-size: 13px; color: var(--gray); font-weight: 500; }
 
-    .hero-right {
-      background: var(--green);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 60px 60px 60px 80px;
-      overflow: hidden;
-      z-index: 1;
-    }
+    .hero-right { background: var(--green); position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px 60px 60px 80px; overflow: hidden; z-index: 1; }
+    .hero-right::before { content: ''; position: absolute; top: -100px; right: -100px; width: 360px; height: 360px; border: 80px solid rgba(200,149,42,0.15); border-radius: 50%; }
 
-    .hero-right::before {
-      content: '';
-      position: absolute;
-      top: -100px; right: -100px;
-      width: 360px; height: 360px;
-      border: 80px solid rgba(200,149,42,0.15);
-      border-radius: 50%;
-    }
-    .hero-right::after {
-      content: '';
-      position: absolute;
-      bottom: -80px; left: -60px;
-      width: 240px; height: 240px;
-      background: rgba(200,149,42,0.08);
-      border-radius: 50%;
-    }
-
-    .hero-card-stack {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      width: 100%;
-      max-width: 380px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .h-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 18px;
-      padding: 24px 18px;
-      text-align: center;
-      transition: all 0.3s;
-    }
-    .h-card:hover {
-      background: rgba(200,149,42,0.2);
-      border-color: rgba(200,149,42,0.4);
-      transform: translateY(-3px);
-    }
-    .h-card.featured {
-      grid-column: span 2;
-      background: rgba(200,149,42,0.15);
-      border-color: rgba(200,149,42,0.35);
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 20px 24px;
-      text-align: left;
-    }
-    .h-card-icon { font-size: 40px; margin-bottom: 10px; display: block; }
-    .h-card.featured .h-card-icon { font-size: 48px; margin-bottom: 0; flex-shrink: 0; }
-    .h-card-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: rgba(255,255,255,0.85);
-      line-height: 1.3;
-    }
+    .hero-card-stack { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; max-width: 380px; position: relative; z-index: 1; }
+    .h-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); border-radius: 18px; padding: 24px 18px; text-align: center; transition: all 0.3s; }
+    .h-card:hover { background: rgba(200,149,42,0.2); border-color: rgba(200,149,42,0.4); transform: translateY(-3px); }
+    .h-card.featured { grid-column: span 2; background: rgba(200,149,42,0.15); border-color: rgba(200,149,42,0.35); display: flex; align-items: center; gap: 16px; padding: 20px 24px; text-align: left; }
+    .h-card .card-icon { color: rgba(255,255,255,0.7); margin-bottom: 10px; display: flex; justify-content: center; }
+    .h-card.featured .card-icon { margin-bottom: 0; flex-shrink: 0; }
+    .h-card:hover .card-icon { color: rgba(255,255,255,0.95); }
+    .h-card-label { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.85); line-height: 1.3; }
     .h-card.featured .h-card-label { font-size: 16px; }
-    .h-card-sub {
-      font-size: 12px;
-      color: rgba(255,255,255,0.5);
-      margin-top: 3px;
-    }
-
-    .hero-badge-float {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      background: var(--gold);
-      color: var(--white);
-      border-radius: 50%;
-      width: 88px;
-      height: 88px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-weight: 800;
-      font-size: 13px;
-      text-align: center;
-      line-height: 1.2;
-      z-index: 2;
-      box-shadow: 0 4px 20px rgba(200,149,42,0.4);
-      animation: spin-badge 8s linear infinite;
-    }
-    @keyframes spin-badge {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    .hero-badge-float span {
-      animation: spin-badge-inner 8s linear infinite reverse;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    .h-card-sub { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 3px; }
 
     /* ─── FEATURE STRIP ─── */
-    .feature-strip {
-      background: var(--white);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .feature-strip-inner {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-    .fs-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 22px 32px;
-      border-right: 1px solid var(--border);
-      transition: background 0.2s;
-    }
+    .feature-strip { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .feature-strip-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .fs-item { display: flex; align-items: center; gap: 14px; padding: 22px 32px; border-right: 1px solid var(--border); transition: background 0.2s; }
     .fs-item:hover { background: var(--green-light); }
     .fs-item:last-child { border-right: none; }
-    .fs-icon {
-      font-size: 28px;
-      flex-shrink: 0;
-    }
-    .fs-title {
-      font-weight: 700;
-      font-size: 14px;
-      color: var(--green);
-      margin-bottom: 2px;
-    }
+    .fs-icon { color: var(--green); flex-shrink: 0; }
+    .fs-title { font-weight: 700; font-size: 14px; color: var(--green); margin-bottom: 2px; }
     .fs-sub { font-size: 12px; color: var(--gray); }
 
     /* ─── SECTIONS ─── */
     section { padding: 88px 80px; }
-    .section-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
+    .section-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
     .section-eyebrow .eyebrow-line { width: 28px; height: 2px; background: var(--gold); }
     .section-eyebrow .eyebrow-text { font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
     .section-title { font-size: clamp(28px, 3vw, 44px); color: var(--green); margin-bottom: 16px; }
     .section-sub { font-size: 16px; color: var(--gray); line-height: 1.7; max-width: 540px; }
     .section-head { margin-bottom: 56px; }
 
-    /* ─── SHOP GRID ─── */
+    /* ─── SHOP ─── */
     .shop { background: var(--cream); }
-    .shop-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-    .shop-featured {
-      background: var(--green);
-      border-radius: 24px;
-      padding: 52px 44px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 440px;
-      position: relative;
-      overflow: hidden;
-    }
-    .shop-featured::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 280px; height: 280px;
-      border: 60px solid rgba(200,149,42,0.12);
-      border-radius: 50%;
-    }
-    .shop-feat-emoji { font-size: 80px; margin-bottom: 24px; display: block; position: relative; z-index: 1; }
-    .shop-feat-tag {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--white);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: 100px;
-      margin-bottom: 12px;
-    }
-    .shop-feat-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 12px;
-      position: relative;
-      z-index: 1;
-    }
-    .shop-feat-desc {
-      font-size: 15px;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.6;
-      margin-bottom: 28px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .shop-mini-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: repeat(2, 1fr);
-      gap: 16px;
-    }
-    .shop-mini {
-      background: var(--white);
-      border-radius: 18px;
-      padding: 28px 22px;
-      border: 1px solid var(--border);
-      transition: all 0.25s;
-      cursor: pointer;
-    }
-    .shop-mini:hover {
-      border-color: var(--green);
-      box-shadow: 0 8px 32px rgba(13,79,60,0.1);
-      transform: translateY(-3px);
-    }
-    .shop-mini-emoji { font-size: 36px; margin-bottom: 14px; display: block; }
-    .shop-mini-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--green);
-      margin-bottom: 6px;
-    }
+    .shop-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .shop-featured { background: var(--green); border-radius: 24px; padding: 52px 44px; display: flex; flex-direction: column; justify-content: space-between; min-height: 440px; position: relative; overflow: hidden; }
+    .shop-featured::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border: 60px solid rgba(200,149,42,0.12); border-radius: 50%; }
+    .shop-feat-icon { color: rgba(255,255,255,0.7); margin-bottom: 24px; position: relative; z-index: 1; }
+    .shop-feat-tag { display: inline-block; background: var(--gold); color: var(--white); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; margin-bottom: 12px; }
+    .shop-feat-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 12px; position: relative; z-index: 1; }
+    .shop-feat-desc { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 28px; position: relative; z-index: 1; }
+    .shop-mini-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(2, 1fr); gap: 16px; }
+    .shop-mini { background: var(--white); border-radius: 18px; padding: 28px 22px; border: 1px solid var(--border); transition: all 0.25s; cursor: pointer; }
+    .shop-mini:hover { border-color: var(--green); box-shadow: 0 8px 32px rgba(13,79,60,0.1); transform: translateY(-3px); }
+    .shop-mini .mini-icon { color: var(--green); margin-bottom: 14px; }
+    .shop-mini-name { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--green); margin-bottom: 6px; }
     .shop-mini-desc { font-size: 13px; color: var(--gray); line-height: 1.5; }
-    .shop-mini-tag {
-      display: inline-block;
-      margin-top: 12px;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 0.05em;
-    }
+    .shop-mini-tag { display: inline-block; margin-top: 12px; font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.05em; }
 
     /* ─── WHY US ─── */
     .why { background: var(--white); }
-    .why-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-    .why-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .why-card {
-      background: var(--cream);
-      border-radius: 18px;
-      padding: 30px 24px;
-      border: 1px solid var(--border);
-      transition: all 0.25s;
-    }
-    .why-card:hover {
-      border-color: var(--green);
-      background: var(--green-light);
-      transform: translateY(-3px);
-    }
-    .why-card-icon { font-size: 32px; margin-bottom: 14px; display: block; }
-    .why-card-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--green);
-      margin-bottom: 8px;
-    }
+    .why-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .why-card { background: var(--cream); border-radius: 18px; padding: 30px 24px; border: 1px solid var(--border); transition: all 0.25s; }
+    .why-card:hover { border-color: var(--green); background: var(--green-light); transform: translateY(-3px); }
+    .why-card .card-icon { color: var(--green); margin-bottom: 14px; }
+    .why-card-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--green); margin-bottom: 8px; }
     .why-card-desc { font-size: 14px; color: var(--gray); line-height: 1.6; }
-
     .why-content { padding-top: 8px; }
-    .why-quote {
-      background: var(--green);
-      border-radius: 20px;
-      padding: 44px 40px;
-      margin-bottom: 32px;
-      position: relative;
-      overflow: hidden;
-    }
-    .why-quote::before {
-      content: '"';
-      position: absolute;
-      top: -20px; left: 24px;
-      font-family: 'Playfair Display', serif;
-      font-size: 160px;
-      color: rgba(255,255,255,0.06);
-      line-height: 1;
-      pointer-events: none;
-    }
-    .why-quote-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-style: italic;
-      color: var(--white);
-      line-height: 1.6;
-      position: relative;
-      z-index: 1;
-      margin-bottom: 20px;
-    }
+    .why-quote { background: var(--green); border-radius: 20px; padding: 44px 40px; margin-bottom: 32px; position: relative; overflow: hidden; }
+    .why-quote::before { content: '"'; position: absolute; top: -20px; left: 24px; font-family: 'Playfair Display', serif; font-size: 160px; color: rgba(255,255,255,0.06); line-height: 1; pointer-events: none; }
+    .why-quote-text { font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic; color: var(--white); line-height: 1.6; position: relative; z-index: 1; margin-bottom: 20px; }
     .why-quote-attr { font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 500; }
-
     .why-checklist { display: flex; flex-direction: column; gap: 14px; }
-    .check-row {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-    .check-dot {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: var(--green-light);
-      border: 2px solid var(--green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      flex-shrink: 0;
-      color: var(--green);
-      font-weight: 700;
-    }
+    .check-row { display: flex; gap: 12px; align-items: center; }
+    .check-dot { width: 22px; height: 22px; border-radius: 50%; background: var(--green-light); border: 2px solid var(--green); display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; color: var(--green); font-weight: 700; }
     .check-text { font-size: 15px; color: var(--text); font-weight: 500; }
 
     /* ─── BRANDS ─── */
     .brands { background: var(--green); text-align: center; }
     .brands .section-eyebrow { justify-content: center; }
-    .brands .section-eyebrow .eyebrow-line { background: rgba(200,149,42,0.6); }
     .brands .section-title { color: var(--white); }
-    .brands-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      margin-top: 44px;
-    }
-    .brand-pill {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.16);
-      color: rgba(255,255,255,0.85);
-      padding: 12px 28px;
-      border-radius: 100px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      transition: all 0.2s;
-    }
-    .brand-pill:hover {
-      background: rgba(200,149,42,0.2);
-      border-color: rgba(200,149,42,0.5);
-      color: var(--white);
-      transform: translateY(-2px);
-    }
+    .brands-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 44px; }
+    .brand-pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); color: rgba(255,255,255,0.85); padding: 12px 28px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; transition: all 0.2s; }
+    .brand-pill:hover { background: rgba(200,149,42,0.2); border-color: rgba(200,149,42,0.5); color: var(--white); transform: translateY(-2px); }
 
     /* ─── REVIEWS ─── */
     .reviews { background: var(--cream); }
-    .reviews-layout {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 60px;
-      align-items: start;
-    }
-    .reviews-score {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 44px 36px;
-      text-align: center;
-      position: sticky;
-      top: 100px;
-    }
-    .score-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 80px;
-      font-weight: 900;
-      color: var(--green);
-      line-height: 1;
-    }
+    .reviews-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: start; }
+    .reviews-score { background: var(--white); border: 1px solid var(--border); border-radius: 24px; padding: 44px 36px; text-align: center; position: sticky; top: 100px; }
+    .score-num { font-family: 'Playfair Display', serif; font-size: 80px; font-weight: 900; color: var(--green); line-height: 1; }
     .score-stars { font-size: 28px; color: var(--gold); letter-spacing: 3px; margin: 12px 0; }
     .score-label { font-size: 14px; color: var(--gray); font-weight: 500; }
     .score-divider { height: 1px; background: var(--border); margin: 24px 0; }
     .score-source { font-size: 13px; color: var(--gray); }
-
     .reviews-list { display: flex; flex-direction: column; gap: 20px; }
-    .review-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px;
-      transition: all 0.25s;
-    }
-    .review-card:hover {
-      border-color: var(--green);
-      box-shadow: 0 8px 30px rgba(13,79,60,0.08);
-    }
+    .review-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: all 0.25s; }
+    .review-card:hover { border-color: var(--green); box-shadow: 0 8px 30px rgba(13,79,60,0.08); }
     .review-stars { font-size: 16px; color: var(--gold); letter-spacing: 2px; margin-bottom: 14px; }
-    .review-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 17px;
-      font-style: italic;
-      color: var(--text);
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-    .review-author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .author-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--green);
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-weight: 800;
-      font-size: 16px;
-      flex-shrink: 0;
-    }
+    .review-text { font-family: 'Playfair Display', serif; font-size: 17px; font-style: italic; color: var(--text); line-height: 1.7; margin-bottom: 20px; }
+    .review-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--green); color: var(--white); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 800; font-size: 16px; flex-shrink: 0; }
     .author-name { font-weight: 700; font-size: 14px; color: var(--text); }
     .author-meta { font-size: 12px; color: var(--gray); }
 
     /* ─── CTA ─── */
-    .cta-section {
-      background: var(--gold-light);
-      border-top: 1px solid #f0e4c5;
-      border-bottom: 1px solid #f0e4c5;
-      padding: 80px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
+    .cta-section { background: var(--gold-light); border-top: 1px solid #f0e4c5; border-bottom: 1px solid #f0e4c5; padding: 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
     .cta-left h2 { font-size: clamp(28px, 3vw, 46px); color: var(--green); margin-bottom: 14px; }
     .cta-left p { font-size: 17px; color: var(--gray); line-height: 1.6; }
-    .cta-right {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .cta-card {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 20px 24px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      border: 1px solid var(--border);
-      transition: all 0.2s;
-    }
+    .cta-right { display: flex; flex-direction: column; gap: 16px; }
+    .cta-card { background: var(--white); border-radius: 16px; padding: 20px 24px; display: flex; align-items: center; gap: 16px; border: 1px solid var(--border); transition: all 0.2s; }
     .cta-card:hover { border-color: var(--gold); transform: translateX(4px); }
-    .cta-card-icon { font-size: 28px; flex-shrink: 0; }
+    .cta-card-icon { color: var(--green); flex-shrink: 0; }
     .cta-card-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray); }
-    .cta-card-value {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--green);
-    }
+    .cta-card-value { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 800; color: var(--green); }
     .cta-card-value a { color: var(--green); }
 
     /* ─── CONTACT ─── */
-    .contact {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding: 0;
-    }
-    .contact-left {
-      background: var(--green);
-      padding: 80px;
-    }
+    .contact { display: grid; grid-template-columns: 1fr 1fr; padding: 0; }
+    .contact-left { background: var(--green); padding: 80px; }
     .contact-left .section-title { color: var(--white); }
     .contact-left .section-eyebrow .eyebrow-line { background: var(--gold); }
-
     .contact-details { margin-top: 44px; display: flex; flex-direction: column; gap: 32px; }
     .c-row { display: flex; align-items: flex-start; gap: 16px; }
-    .c-icon {
-      width: 50px;
-      height: 50px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      flex-shrink: 0;
-    }
-    .c-label {
-      font-size: 11.5px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 5px;
-    }
-    .c-value {
-      font-family: 'Playfair Display', serif;
-      font-size: 19px;
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.3;
-    }
+    .c-icon { width: 50px; height: 50px; background: rgba(255,255,255,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: rgba(255,255,255,0.85); }
+    .c-label { font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 5px; }
+    .c-value { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; color: var(--white); line-height: 1.3; }
     .c-value a { color: var(--gold); }
-
     .hours-table { margin-top: 6px; display: flex; flex-direction: column; gap: 7px; }
-    .h-row {
-      display: flex;
-      justify-content: space-between;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-    }
+    .h-row { display: flex; justify-content: space-between; font-family: 'DM Sans', sans-serif; font-size: 14px; }
     .h-day { color: rgba(255,255,255,0.6); font-weight: 500; }
     .h-time { color: var(--white); font-weight: 600; }
     .h-time.closed { color: rgba(255,255,255,0.35); }
-
-    .contact-map {
-      position: relative;
-      min-height: 520px;
-    }
-    .contact-map iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      position: absolute;
-      inset: 0;
-    }
+    .contact-map { position: relative; min-height: 520px; }
+    .contact-map iframe { width: 100%; height: 100%; border: none; position: absolute; inset: 0; }
 
     /* ─── FOOTER ─── */
-    footer {
-      background: #0a3a2b;
-      padding: 44px 80px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      font-weight: 800;
-      color: rgba(255,255,255,0.85);
-    }
+    footer { background: #0a3a2b; padding: 44px 80px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 800; color: rgba(255,255,255,0.85); }
     .footer-logo span { color: var(--gold); }
     .footer-copy { font-size: 13px; color: rgba(255,255,255,0.4); }
     .footer-links { display: flex; gap: 24px; }
@@ -832,77 +202,56 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1100px) {
-      section { padding: 64px 40px; }
-      nav { padding: 0 32px; }
-      .hero-left { padding: 60px 40px 60px 40px; }
-      .hero-right { padding: 60px 40px; }
-      .why-layout { gap: 48px; }
-      .cta-section { padding: 64px 40px; }
-      .contact-left { padding: 64px 40px; }
+      section { padding: 64px 40px; } nav { padding: 0 32px; }
+      .hero-left { padding: 60px 40px; } .hero-right { padding: 60px 40px; }
+      .cta-section { padding: 64px 40px; } .contact-left { padding: 64px 40px; }
       footer { padding: 40px; }
     }
-
     @media (max-width: 900px) {
-      .shop-layout { grid-template-columns: 1fr; }
-      .why-layout { grid-template-columns: 1fr; }
-      .reviews-layout { grid-template-columns: 1fr; }
+      .shop-layout, .why-layout, .reviews-layout, .cta-section { grid-template-columns: 1fr; }
       .reviews-score { position: static; }
-      .cta-section { grid-template-columns: 1fr; gap: 40px; }
     }
-
     @media (max-width: 768px) {
-      .announce { font-size: 12px; }
-      nav { padding: 0 20px; }
-      .nav-links, .nav-right { display: none; }
-
+      nav { padding: 0 20px; } .nav-links, .nav-right { display: none; }
       .hero { grid-template-columns: 1fr; }
-      .hero-left { padding: 56px 20px; }
-      .hero-left::after { display: none; }
-      .hero-right { display: none; }
+      .hero-left { padding: 56px 20px; } .hero-left::after { display: none; } .hero-right { display: none; }
       .hero h1 { font-size: 38px; }
-
       section { padding: 56px 20px; }
-
       .feature-strip-inner { grid-template-columns: 1fr 1fr; }
-      .fs-item { padding: 14px 16px; }
-
-      .shop-mini-grid { grid-template-columns: 1fr; }
-      .why-grid { grid-template-columns: 1fr; }
-
-      .contact { grid-template-columns: 1fr; }
-      .contact-left { padding: 56px 20px; }
+      .shop-mini-grid, .why-grid { grid-template-columns: 1fr; }
+      .contact { grid-template-columns: 1fr; } .contact-left { padding: 56px 20px; }
       .contact-map { min-height: 300px; }
-
       footer { flex-direction: column; text-align: center; padding: 40px 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ANNOUNCE -->
   <div class="announce">
-    🏠 Now serving Hammond &amp; Northwest Indiana — <a href="tel:+12199333079">Call (219) 933-3079</a> for today's inventory
+    Serving Hammond &amp; Northwest Indiana — <a href="tel:+12199333079">Call (219) 933-3079</a> for today's inventory
   </div>
 
-  <!-- NAV -->
   <nav>
     <div class="logo">
-      <div class="logo-badge">🏠</div>
+      <div class="logo-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
       <div>
         <div class="logo-name">Appliance Depot</div>
         <div class="logo-tagline">Hammond, Indiana</div>
       </div>
     </div>
-
     <ul class="nav-links">
       <li><a href="#shop">Shop</a></li>
       <li><a href="#why">Why Us</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#contact">Visit Us</a></li>
     </ul>
-
     <div class="nav-right">
-      <a href="tel:+12199333079" class="nav-phone">📞 (219) 933-3079</a>
+      <a href="tel:+12199333079" class="nav-phone">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z"/></svg>
+        (219) 933-3079
+      </a>
       <a href="#contact" class="btn btn-green">Get Directions</a>
     </div>
   </nav>
@@ -910,69 +259,39 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
-      <div class="hero-eyebrow">
-        <div class="eyebrow-line"></div>
-        <div class="eyebrow-text">Hammond's Appliance Experts</div>
-      </div>
-
+      <div class="hero-eyebrow"><div class="eyebrow-line"></div><div class="eyebrow-text">Hammond's Appliance Experts</div></div>
       <h1>Quality<br />Appliances.<br /><em>Fair Prices.</em></h1>
-
-      <p class="hero-desc">
-        New and quality used appliances for every home and budget. Refrigerators, washers, dryers, ranges, dishwashers — in stock and ready today at 4728 Hohman Ave.
-      </p>
-
+      <p class="hero-desc">New and quality used appliances for every home and budget. Refrigerators, washers, dryers, ranges, dishwashers — in stock and ready today at 4728 Hohman Ave.</p>
       <div class="hero-ctas">
-        <a href="#shop" class="btn btn-green btn-lg">🛒 Shop Now</a>
-        <a href="tel:+12199333079" class="btn btn-outline-green btn-lg">📞 Call Us</a>
+        <a href="#shop" class="btn btn-green btn-lg">Shop Now</a>
+        <a href="tel:+12199333079" class="btn btn-outline-green btn-lg">Call Us</a>
       </div>
-
       <div class="hero-trust">
-        <div class="trust-item">
-          <div class="trust-num">30+</div>
-          <div class="trust-label">Years Serving Hammond</div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-num">5★</div>
-          <div class="trust-label">Local Rating</div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-num">100s</div>
-          <div class="trust-label">In-Stock Today</div>
-        </div>
+        <div class="trust-item"><div class="trust-num">30+</div><div class="trust-label">Years Serving Hammond</div></div>
+        <div class="trust-item"><div class="trust-num">5★</div><div class="trust-label">Local Rating</div></div>
+        <div class="trust-item"><div class="trust-num">100s</div><div class="trust-label">In-Stock Today</div></div>
       </div>
     </div>
-
     <div class="hero-right">
-      <div class="hero-badge-float">
-        <span>
-          <div style="font-size:11px;">NEW &</div>
-          <div style="font-size:15px;">USED</div>
-          <div style="font-size:11px;">IN STOCK</div>
-        </span>
-      </div>
-
       <div class="hero-card-stack">
         <div class="h-card featured">
-          <span class="h-card-icon">🧊</span>
-          <div>
-            <div class="h-card-label">Refrigerators</div>
-            <div class="h-card-sub">French door, side-by-side & more</div>
-          </div>
+          <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M4 14h16"/></svg></div>
+          <div><div class="h-card-label">Refrigerators</div><div class="h-card-sub">French door, side-by-side &amp; more</div></div>
         </div>
         <div class="h-card">
-          <span class="h-card-icon">🫧</span>
+          <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="12" cy="12" r="4"/><path d="M5 7h1"/></svg></div>
           <div class="h-card-label">Washers</div>
         </div>
         <div class="h-card">
-          <span class="h-card-icon">🌀</span>
+          <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M17 7h1"/></svg></div>
           <div class="h-card-label">Dryers</div>
         </div>
         <div class="h-card">
-          <span class="h-card-icon">🔥</span>
+          <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><circle cx="8" cy="6.5" r="0.5" fill="currentColor"/><circle cx="12" cy="6.5" r="0.5" fill="currentColor"/><circle cx="16" cy="6.5" r="0.5" fill="currentColor"/></svg></div>
           <div class="h-card-label">Ranges</div>
         </div>
         <div class="h-card">
-          <span class="h-card-icon">🍽️</span>
+          <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h12"/><path d="M6 12h12"/></svg></div>
           <div class="h-card-label">Dishwashers</div>
         </div>
       </div>
@@ -983,32 +302,20 @@
   <div class="feature-strip">
     <div class="feature-strip-inner">
       <div class="fs-item">
-        <div class="fs-icon">🚚</div>
-        <div>
-          <div class="fs-title">Local Delivery</div>
-          <div class="fs-sub">Serving Hammond &amp; surrounding areas</div>
-        </div>
+        <div class="fs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="1"/><path d="M5 21v-4"/><path d="M9 21v-4"/></svg></div>
+        <div><div class="fs-title">Local Delivery</div><div class="fs-sub">Serving Hammond &amp; surrounding areas</div></div>
       </div>
       <div class="fs-item">
-        <div class="fs-icon">💰</div>
-        <div>
-          <div class="fs-title">Best Local Prices</div>
-          <div class="fs-sub">New &amp; quality used options</div>
-        </div>
+        <div class="fs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div><div class="fs-title">Best Local Prices</div><div class="fs-sub">New &amp; quality used options</div></div>
       </div>
       <div class="fs-item">
-        <div class="fs-icon">📦</div>
-        <div>
-          <div class="fs-title">In Stock Now</div>
-          <div class="fs-sub">Take it home today</div>
-        </div>
+        <div class="fs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+        <div><div class="fs-title">In Stock Now</div><div class="fs-sub">Take it home today</div></div>
       </div>
       <div class="fs-item">
-        <div class="fs-icon">🤝</div>
-        <div>
-          <div class="fs-title">Family Owned</div>
-          <div class="fs-sub">30+ years in the community</div>
-        </div>
+        <div class="fs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div><div class="fs-title">Family Owned</div><div class="fs-sub">30+ years in the community</div></div>
       </div>
     </div>
   </div>
@@ -1016,49 +323,44 @@
   <!-- SHOP -->
   <section class="shop" id="shop">
     <div class="section-head">
-      <div class="section-eyebrow">
-        <div class="eyebrow-line"></div>
-        <div class="eyebrow-text">What We Carry</div>
-      </div>
+      <div class="section-eyebrow"><div class="eyebrow-line"></div><div class="eyebrow-text">What We Carry</div></div>
       <h2 class="section-title">Shop Our Appliances</h2>
       <p class="section-sub">From premium brands to budget-friendly finds — everything your home needs, all under one roof in Hammond.</p>
     </div>
-
     <div class="shop-layout">
       <div class="shop-featured">
         <div>
-          <span class="shop-feat-emoji">🧊</span>
+          <div class="shop-feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M4 14h16"/></svg></div>
           <div class="shop-feat-tag">Most Popular</div>
           <div class="shop-feat-title">Refrigerators</div>
-          <div class="shop-feat-desc">French door, side-by-side, top & bottom freezer models. All sizes in stock — stainless, black, and white finishes.</div>
+          <div class="shop-feat-desc">French door, side-by-side, top &amp; bottom freezer models. All sizes in stock — stainless, black, and white finishes.</div>
         </div>
-        <a href="tel:+12199333079" class="btn btn-gold">📞 Check Availability</a>
+        <a href="tel:+12199333079" class="btn btn-gold">Check Availability</a>
       </div>
-
       <div class="shop-mini-grid">
         <div class="shop-mini">
-          <span class="shop-mini-emoji">🫧</span>
+          <div class="mini-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="12" cy="12" r="4"/><path d="M5 7h1"/></svg></div>
           <div class="shop-mini-name">Washers</div>
           <div class="shop-mini-desc">Top-load and front-load, all sizes.</div>
-          <div class="shop-mini-tag">↗ In Stock</div>
+          <div class="shop-mini-tag">In Stock</div>
         </div>
         <div class="shop-mini">
-          <span class="shop-mini-emoji">🌀</span>
+          <div class="mini-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M17 7h1"/></svg></div>
           <div class="shop-mini-name">Dryers</div>
-          <div class="shop-mini-desc">Electric & gas. Matching pairs available.</div>
-          <div class="shop-mini-tag">↗ In Stock</div>
+          <div class="shop-mini-desc">Electric &amp; gas. Matching pairs available.</div>
+          <div class="shop-mini-tag">In Stock</div>
         </div>
         <div class="shop-mini">
-          <span class="shop-mini-emoji">🔥</span>
-          <div class="shop-mini-name">Ranges & Ovens</div>
-          <div class="shop-mini-desc">Gas & electric, all configurations.</div>
-          <div class="shop-mini-tag">↗ In Stock</div>
+          <div class="mini-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/></svg></div>
+          <div class="shop-mini-name">Ranges &amp; Ovens</div>
+          <div class="shop-mini-desc">Gas &amp; electric, all configurations.</div>
+          <div class="shop-mini-tag">In Stock</div>
         </div>
         <div class="shop-mini">
-          <span class="shop-mini-emoji">🍽️</span>
+          <div class="mini-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h12"/><path d="M6 12h12"/></svg></div>
           <div class="shop-mini-name">Dishwashers</div>
-          <div class="shop-mini-desc">Built-in, multiple finishes & cycles.</div>
-          <div class="shop-mini-tag">↗ In Stock</div>
+          <div class="shop-mini-desc">Built-in, multiple finishes &amp; cycles.</div>
+          <div class="shop-mini-tag">In Stock</div>
         </div>
       </div>
     </div>
@@ -1069,60 +371,39 @@
     <div class="why-layout">
       <div class="why-grid">
         <div class="why-card">
-          <span class="why-card-icon">🏠</span>
+          <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
           <div class="why-card-title">Family Owned</div>
           <div class="why-card-desc">A local Hammond business serving the community for over 30 years. We treat every customer like a neighbor.</div>
         </div>
         <div class="why-card">
-          <span class="why-card-icon">💰</span>
-          <div class="why-card-title">New & Used Options</div>
-          <div class="why-card-desc">Not everyone needs to pay full retail. We carry quality used & refurbished appliances alongside new models.</div>
+          <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div class="why-card-title">New &amp; Used Options</div>
+          <div class="why-card-desc">Not everyone needs to pay full retail. We carry quality used &amp; refurbished appliances alongside new models.</div>
         </div>
         <div class="why-card">
-          <span class="why-card-icon">📦</span>
+          <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
           <div class="why-card-title">Ready Today</div>
           <div class="why-card-desc">No waiting weeks for delivery. Most appliances are available to take home or schedule same-week delivery.</div>
         </div>
         <div class="why-card">
-          <span class="why-card-icon">🤝</span>
+          <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <div class="why-card-title">Honest Advice</div>
           <div class="why-card-desc">No pushy sales tactics. Our staff helps you find what fits your home and budget — nothing more.</div>
         </div>
       </div>
-
       <div class="why-content">
-        <div class="section-eyebrow">
-          <div class="eyebrow-line"></div>
-          <div class="eyebrow-text">Why Choose Us</div>
-        </div>
+        <div class="section-eyebrow"><div class="eyebrow-line"></div><div class="eyebrow-text">Why Choose Us</div></div>
         <h2 class="section-title" style="margin-bottom: 28px;">Hammond's Trusted<br />Appliance Source</h2>
-
         <div class="why-quote">
           <div class="why-quote-text">"We're not a big box store. We're your neighbors — and we take that seriously."</div>
           <div class="why-quote-attr">— Appliance Depot, Hammond IN</div>
         </div>
-
         <div class="why-checklist">
-          <div class="check-row">
-            <div class="check-dot">✓</div>
-            <div class="check-text">Hundreds of appliances in stock at all times</div>
-          </div>
-          <div class="check-row">
-            <div class="check-dot">✓</div>
-            <div class="check-text">Competitive pricing on top brands</div>
-          </div>
-          <div class="check-row">
-            <div class="check-dot">✓</div>
-            <div class="check-text">Budget-friendly used & refurbished options</div>
-          </div>
-          <div class="check-row">
-            <div class="check-dot">✓</div>
-            <div class="check-text">Local delivery to Hammond & surrounding areas</div>
-          </div>
-          <div class="check-row">
-            <div class="check-dot">✓</div>
-            <div class="check-text">Knowledgeable staff with zero sales pressure</div>
-          </div>
+          <div class="check-row"><div class="check-dot">&#10003;</div><div class="check-text">Hundreds of appliances in stock at all times</div></div>
+          <div class="check-row"><div class="check-dot">&#10003;</div><div class="check-text">Competitive pricing on top brands</div></div>
+          <div class="check-row"><div class="check-dot">&#10003;</div><div class="check-text">Budget-friendly used &amp; refurbished options</div></div>
+          <div class="check-row"><div class="check-dot">&#10003;</div><div class="check-text">Local delivery to Hammond &amp; surrounding areas</div></div>
+          <div class="check-row"><div class="check-dot">&#10003;</div><div class="check-text">Knowledgeable staff with zero sales pressure</div></div>
         </div>
       </div>
     </div>
@@ -1130,22 +411,14 @@
 
   <!-- BRANDS -->
   <section class="brands">
-    <div class="section-eyebrow">
-      <div class="eyebrow-line"></div>
-      <div class="eyebrow-text">Trusted Brands</div>
-    </div>
+    <div class="section-eyebrow"><div class="eyebrow-line"></div><div class="eyebrow-text">Trusted Brands</div></div>
     <h2 class="section-title">We Carry the Best Brands</h2>
     <div class="brands-row">
-      <div class="brand-pill">Whirlpool</div>
-      <div class="brand-pill">GE</div>
-      <div class="brand-pill">Samsung</div>
-      <div class="brand-pill">LG</div>
-      <div class="brand-pill">Maytag</div>
-      <div class="brand-pill">Frigidaire</div>
-      <div class="brand-pill">KitchenAid</div>
-      <div class="brand-pill">Bosch</div>
-      <div class="brand-pill">Amana</div>
-      <div class="brand-pill">Kenmore</div>
+      <div class="brand-pill">Whirlpool</div><div class="brand-pill">GE</div>
+      <div class="brand-pill">Samsung</div><div class="brand-pill">LG</div>
+      <div class="brand-pill">Maytag</div><div class="brand-pill">Frigidaire</div>
+      <div class="brand-pill">KitchenAid</div><div class="brand-pill">Bosch</div>
+      <div class="brand-pill">Amana</div><div class="brand-pill">Kenmore</div>
       <div class="brand-pill">Electrolux</div>
     </div>
   </section>
@@ -1153,13 +426,9 @@
   <!-- REVIEWS -->
   <section class="reviews" id="reviews">
     <div class="section-head">
-      <div class="section-eyebrow">
-        <div class="eyebrow-line"></div>
-        <div class="eyebrow-text">Customer Reviews</div>
-      </div>
+      <div class="section-eyebrow"><div class="eyebrow-line"></div><div class="eyebrow-text">Customer Reviews</div></div>
       <h2 class="section-title">What People Are Saying</h2>
     </div>
-
     <div class="reviews-layout">
       <div class="reviews-score">
         <div class="score-num">5.0</div>
@@ -1168,40 +437,21 @@
         <div class="score-divider"></div>
         <div class="score-source">Based on Yelp Reviews<br />4728 Hohman Ave, Hammond</div>
       </div>
-
       <div class="reviews-list">
         <div class="review-card">
           <div class="review-stars">★★★★★</div>
           <div class="review-text">"Great prices and friendly service. I needed a washer fast and they had exactly what I was looking for. Will definitely be back."</div>
-          <div class="review-author">
-            <div class="author-avatar">G</div>
-            <div>
-              <div class="author-name">Gus L.</div>
-              <div class="author-meta">Yelp Review · Hammond, IN</div>
-            </div>
-          </div>
+          <div class="review-author"><div class="author-avatar">G</div><div><div class="author-name">Gus L.</div><div class="author-meta">Yelp Review · Hammond, IN</div></div></div>
         </div>
         <div class="review-card">
           <div class="review-stars">★★★★★</div>
           <div class="review-text">"Honest, no-pressure shopping. They helped me find a great fridge within my budget without trying to upsell me on things I didn't need."</div>
-          <div class="review-author">
-            <div class="author-avatar">M</div>
-            <div>
-              <div class="author-name">Maria T.</div>
-              <div class="author-meta">Local Customer · Hammond, IN</div>
-            </div>
-          </div>
+          <div class="review-author"><div class="author-avatar">M</div><div><div class="author-name">Maria T.</div><div class="author-meta">Local Customer · Hammond, IN</div></div></div>
         </div>
         <div class="review-card">
           <div class="review-stars">★★★★★</div>
           <div class="review-text">"Best appliance store in Hammond. Bought my dryer here two years ago and it still runs great. Prices beat everyone else in the area."</div>
-          <div class="review-author">
-            <div class="author-avatar">D</div>
-            <div>
-              <div class="author-name">Dave R.</div>
-              <div class="author-meta">Repeat Customer · Hammond, IN</div>
-            </div>
-          </div>
+          <div class="review-author"><div class="author-avatar">D</div><div><div class="author-name">Dave R.</div><div class="author-meta">Repeat Customer · Hammond, IN</div></div></div>
         </div>
       </div>
     </div>
@@ -1215,25 +465,16 @@
     </div>
     <div class="cta-right">
       <a href="tel:+12199333079" class="cta-card">
-        <div class="cta-card-icon">📞</div>
-        <div>
-          <div class="cta-card-label">Call Us</div>
-          <div class="cta-card-value">(219) 933-3079</div>
-        </div>
+        <div class="cta-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z"/></svg></div>
+        <div><div class="cta-card-label">Call Us</div><div class="cta-card-value">(219) 933-3079</div></div>
       </a>
       <a href="https://maps.google.com/?q=4728+Hohman+Ave,+Hammond,+IN+46327" target="_blank" class="cta-card">
-        <div class="cta-card-icon">📍</div>
-        <div>
-          <div class="cta-card-label">Address</div>
-          <div class="cta-card-value">4728 Hohman Ave, Hammond</div>
-        </div>
+        <div class="cta-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="cta-card-label">Address</div><div class="cta-card-value">4728 Hohman Ave, Hammond</div></div>
       </a>
       <div class="cta-card">
-        <div class="cta-card-icon">🕐</div>
-        <div>
-          <div class="cta-card-label">Hours Today</div>
-          <div class="cta-card-value">Mon–Fri 8:30am–5pm · Sat 9–1pm</div>
-        </div>
+        <div class="cta-card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div><div class="cta-card-label">Store Hours</div><div class="cta-card-value">Mon–Fri 8:30am–5pm &middot; Sat 9–1pm</div></div>
       </div>
     </div>
   </section>
@@ -1241,29 +482,19 @@
   <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="contact-left">
-      <div class="section-eyebrow">
-        <div class="eyebrow-line"></div>
-        <div class="eyebrow-text">Find Us</div>
-      </div>
+      <div class="section-eyebrow"><div class="eyebrow-line"></div><div class="eyebrow-text">Find Us</div></div>
       <h2 class="section-title">Visit the Store</h2>
-
       <div class="contact-details">
         <div class="c-row">
-          <div class="c-icon">📍</div>
-          <div>
-            <div class="c-label">Address</div>
-            <div class="c-value">4728 Hohman Ave<br />Hammond, IN 46327</div>
-          </div>
+          <div class="c-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="c-label">Address</div><div class="c-value">4728 Hohman Ave<br />Hammond, IN 46327</div></div>
         </div>
         <div class="c-row">
-          <div class="c-icon">📞</div>
-          <div>
-            <div class="c-label">Phone</div>
-            <div class="c-value"><a href="tel:+12199333079">(219) 933-3079</a></div>
-          </div>
+          <div class="c-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z"/></svg></div>
+          <div><div class="c-label">Phone</div><div class="c-value"><a href="tel:+12199333079">(219) 933-3079</a></div></div>
         </div>
         <div class="c-row">
-          <div class="c-icon">🕐</div>
+          <div class="c-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
           <div>
             <div class="c-label">Store Hours</div>
             <div class="c-value">
@@ -1277,27 +508,17 @@
         </div>
       </div>
     </div>
-
     <div class="contact-map">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2971.186!2d-87.5017!3d41.6225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8811db7a7d25d1b7%3A0x1!2s4728+Hohman+Ave%2C+Hammond%2C+IN+46327!5e0!3m2!1sen!2sus!4v1"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Appliance Depot Location">
-      </iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2971.186!2d-87.5017!3d41.6225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8811db7a7d25d1b7%3A0x1!2s4728+Hohman+Ave%2C+Hammond%2C+IN+46327!5e0!3m2!1sen!2sus!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Appliance Depot Location"></iframe>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-logo">Appliance <span>Depot</span></div>
     <div class="footer-copy">© 2025 Appliance Depot · 4728 Hohman Ave, Hammond, IN 46327</div>
     <div class="footer-links">
-      <a href="#shop">Shop</a>
-      <a href="#why">About</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#contact">Contact</a>
+      <a href="#shop">Shop</a><a href="#why">About</a>
+      <a href="#reviews">Reviews</a><a href="#contact">Contact</a>
     </div>
   </footer>
 
